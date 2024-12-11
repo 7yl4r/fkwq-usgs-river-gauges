@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "data-download.html",
+    "href": "data-download.html",
+    "title": "fkwq-usgs-river-gauges",
+    "section": "",
+    "text": "library(glue)\nlibrary(httr)\n\n# Read the input CSV file\nsites &lt;- read.csv(\"data/SouthFL_USGS_ACE_SiteList.csv\")\n\n# Specify the base URL\nbase_url &lt;- \"https://waterdata.usgs.gov/nwis/dv?cb_{param_code}=on&format=rdb&site_no={sta_ID}&referred_module=sw&period=&begin_date=01-01-1950&end_date=12-31-2024\"\n\n# Create a directory to save the downloaded files\noutput_dir &lt;- \"data/downloads\"\ndir.create(output_dir, showWarnings = FALSE)\n\n# Loop through each row of the dataframe\nfor (i in seq_len(nrow(sites))) {\n  # Extract parameters from the current row\n  sta_ID &lt;- sites$USGS_ID[i] # Replace with the actual column name\n  param_code &lt;- sites$parameter2[i] # Replace with the actual column name\n  \n  # Construct the URL with parameters\n  query_params &lt;- list(param1 = param1, param2 = param2)\n  url &lt;- modify_url(base_url, query = query_params)\n  \n  # Construct the output file name\n  output_file &lt;- file.path(output_dir, paste0(\"file_\", i, \".csv\"))\n  \n  # Download the file and save it locally\n  tryCatch({\n    GET(url, write_disk(output_file, overwrite = TRUE))\n    message(\"Downloaded: \", output_file)\n  }, error = function(e) {\n    warning(\"Failed to download for row \", i, \": \", conditionMessage(e))\n  })\n}\n\nmessage(\"All downloads completed.\")"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "fkwq-usgs-river-gauges",
+    "section": "",
+    "text": "This is a Quarto website."
+  },
+  {
+    "objectID": "index.html#for-each-row-in-datacsv-do-api-call",
+    "href": "index.html#for-each-row-in-datacsv-do-api-call",
+    "title": "fkwq-usgs-river-gauges",
+    "section": "For each row in data/[…]csv do API call:",
+    "text": "For each row in data/[…]csv do API call:\nparams and station ID values in quotes\nThe API requires a call like this:\nhttps://waterdata.usgs.gov/nwis/dv?cb_{param_code}=on&format=rdb&site_no={sta_ID}&referred_module=sw&period=&begin_date=01-01-1950&end_date=12-31-2024 ,‘’ContentType’‘,’‘raw’’\nExamples from the first row of the csv file:\nparam_code = 00060 (this is for discharge; each parameter has a different code)\nsta_ID = 02292900 (must have the 0 in front)"
+  },
+  {
+    "objectID": "index.html#plot-the-data",
+    "href": "index.html#plot-the-data",
+    "title": "fkwq-usgs-river-gauges",
+    "section": "Plot the data",
+    "text": "Plot the data"
+  },
+  {
+    "objectID": "map.html",
+    "href": "map.html",
+    "title": "Interactive Station Map",
+    "section": "",
+    "text": "Map of stations.\n\n# Load required libraries\nlibrary(leaflet)\n\n# Load the data\ndata &lt;- read.csv(\"data/SouthFL_USGS_ACE_SiteList.csv\")  # Replace 'your_file.csv' with your file path\n\nleaflet(data) %&gt;%\n  addTiles() %&gt;%  # Add default OpenStreetMap tiles\n  addCircleMarkers(\n    ~Lon, ~Lat,\n    label = ~Station_shortname,  # Hover labels\n    radius = 5,                 # Adjust the size of the circle markers\n    color = \"blue\",             # Marker border color\n    fillColor = \"lightblue\",    # Marker fill color\n    fillOpacity = 0.7,          # Opacity of the fill color\n    popup = ~paste(\"&lt;b&gt;Station:&lt;/b&gt;\", Station_shortname)\n  )"
+  }
+]
