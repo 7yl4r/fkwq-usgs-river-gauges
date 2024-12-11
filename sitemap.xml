@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://7yl4r.github.io/fkwq-usgs-river-gauges/flowDownRiver.html</loc>
-    <lastmod>2024-12-11T18:08:19.123Z</lastmod>
+    <lastmod>2024-12-11T18:52:04.372Z</lastmod>
   </url>
   <url>
     <loc>https://7yl4r.github.io/fkwq-usgs-river-gauges/map.html</loc>
@@ -11,6 +11,10 @@
   <url>
     <loc>https://7yl4r.github.io/fkwq-usgs-river-gauges/index.html</loc>
     <lastmod>2024-12-11T17:21:35.885Z</lastmod>
+  </url>
+  <url>
+    <loc>https://7yl4r.github.io/fkwq-usgs-river-gauges/stationInspect.html</loc>
+    <lastmod>2024-12-11T18:46:34.081Z</lastmod>
   </url>
   <url>
     <loc>https://7yl4r.github.io/fkwq-usgs-river-gauges/about.html</loc>
