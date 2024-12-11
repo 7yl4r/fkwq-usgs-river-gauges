@@ -93,8 +93,8 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="./map.html"> 
+<span class="menu-text">Interactive Station Map</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -107,15 +107,8 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#for-each-row-in-datacsv-do-api-call" id="toc-for-each-row-in-datacsv-do-api-call" class="nav-link active" data-scroll-target="#for-each-row-in-datacsv-do-api-call">For each row in data/[…]csv do API call:</a></li>
-  <li><a href="#plot-the-data" id="toc-plot-the-data" class="nav-link" data-scroll-target="#plot-the-data">Plot the data</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -139,21 +132,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a Quarto website.</p>
-<section id="for-each-row-in-datacsv-do-api-call" class="level2">
-<h2 class="anchored" data-anchor-id="for-each-row-in-datacsv-do-api-call">For each row in data/[…]csv do API call:</h2>
-<p>params and station ID values in quotes</p>
-<p>The API requires a call like this:</p>
-<p>https://waterdata.usgs.gov/nwis/dv?cb_{param_code}=on&amp;format=rdb&amp;site_no={sta_ID}&amp;referred_module=sw&amp;period=&amp;begin_date=01-01-1950&amp;end_date=12-31-2024 ,‘’ContentType’‘,’‘raw’’</p>
-<p>Examples from the first row of the csv file:</p>
-<p>param_code = 00060 (this is for discharge; each parameter has a different code)</p>
-<p>sta_ID = 02292900 (must have the 0 in front)</p>
-</section>
-<section id="plot-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="plot-the-data">Plot the data</h2>
+<p>Water discharge monitoring reports by IMaRS built using quarto.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
