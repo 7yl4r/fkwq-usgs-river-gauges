@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://7yl4r.github.io/fkwq-usgs-river-gauges/data-download.html</loc>
-    <lastmod>2024-12-11T17:17:47.611Z</lastmod>
+    <loc>https://7yl4r.github.io/fkwq-usgs-river-gauges/flowDownRiver.html</loc>
+    <lastmod>2024-12-11T18:08:19.123Z</lastmod>
+  </url>
+  <url>
+    <loc>https://7yl4r.github.io/fkwq-usgs-river-gauges/map.html</loc>
+    <lastmod>2024-12-11T17:24:32.957Z</lastmod>
+  </url>
+  <url>
+    <loc>https://7yl4r.github.io/fkwq-usgs-river-gauges/index.html</loc>
+    <lastmod>2024-12-11T17:21:35.885Z</lastmod>
   </url>
   <url>
     <loc>https://7yl4r.github.io/fkwq-usgs-river-gauges/about.html</loc>
     <lastmod>2024-12-11T17:17:11.381Z</lastmod>
   </url>
   <url>
-    <loc>https://7yl4r.github.io/fkwq-usgs-river-gauges/index.html</loc>
-    <lastmod>2024-12-11T17:19:44.042Z</lastmod>
-  </url>
-  <url>
-    <loc>https://7yl4r.github.io/fkwq-usgs-river-gauges/map.html</loc>
-    <lastmod>2024-12-11T17:17:30.634Z</lastmod>
+    <loc>https://7yl4r.github.io/fkwq-usgs-river-gauges/data-download.html</loc>
+    <lastmod>2024-12-11T17:17:47.611Z</lastmod>
   </url>
 </urlset>

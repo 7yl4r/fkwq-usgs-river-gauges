@@ -1,17 +1,17 @@
 [
   {
-    "objectID": "data-download.html",
-    "href": "data-download.html",
-    "title": "fkwq-usgs-river-gauges",
+    "objectID": "flowDownRiver.html",
+    "href": "flowDownRiver.html",
+    "title": "Visualizations of River Discharge flowing downstream",
     "section": "",
-    "text": "library(glue)\nlibrary(httr)\n\n# Read the input CSV file\nsites &lt;- read.csv(\"data/SouthFL_USGS_ACE_SiteList.csv\")\n\n# Specify the base URL\nbase_url &lt;- \"https://waterdata.usgs.gov/nwis/dv?cb_{param_code}=on&format=rdb&site_no={sta_ID}&referred_module=sw&period=&begin_date=01-01-1950&end_date=12-31-2024\"\n\n# Create a directory to save the downloaded files\noutput_dir &lt;- \"data/downloads\"\ndir.create(output_dir, showWarnings = FALSE)\n\n# Loop through each row of the dataframe\nfor (i in seq_len(nrow(sites))) {\n  # Extract parameters from the current row\n  sta_ID &lt;- sites$USGS_ID[i] # Replace with the actual column name\n  param_code &lt;- sites$parameter2[i] # Replace with the actual column name\n  \n  # Construct the URL with parameters\n  query_params &lt;- list(param1 = param1, param2 = param2)\n  url &lt;- modify_url(base_url, query = query_params)\n  \n  # Construct the output file name\n  output_file &lt;- file.path(output_dir, paste0(\"file_\", i, \".csv\"))\n  \n  # Download the file and save it locally\n  tryCatch({\n    GET(url, write_disk(output_file, overwrite = TRUE))\n    message(\"Downloaded: \", output_file)\n  }, error = function(e) {\n    warning(\"Failed to download for row \", i, \": \", conditionMessage(e))\n  })\n}\n\nmessage(\"All downloads completed.\")"
+    "text": "library(glue)\n\nstations &lt;-c(\n  \"02292900\",\n  \"02276998\",\n  \"022908295\"\n)\n\nmetadata &lt;- read.csv(\n  \"data/SouthFL_USGS_ACE_SiteList.csv\",\n  colClasses = \"character\",\n  quote = \"\\\"\"\n)\n\n# Remove any remaining quotes from all elements in the dataframe\nmetadata &lt;- as.data.frame(apply(metadata, 2, function(x) gsub(\"\\\"\", \"\", x)))\nstation_id &lt;- stations[1]\n\n# Get row from metadata with USGS_ID matching station_id\nmetadata_row &lt;- metadata[metadata$USGS_ID == station_id, ]\n\n# Get param_code from 'Disch' column of metadata row\nparam_code &lt;- metadata_row$Disch\n\nrequest &lt;- glue(\n  \"https://waterdata.usgs.gov/nwis/dv?cb_{param_code}=on&format=rdb&site_no={station_id}&referred_module=sw&period=&begin_date=01-01-1950&end_date=12-31-2024\"\n)\n\nprint(request)\n\nhttps://waterdata.usgs.gov/nwis/dv?cb_00060=on&format=rdb&site_no=02292900&referred_module=sw&period=&begin_date=01-01-1950&end_date=12-31-2024\n\n# Perform the request and read the data\nlibrary(httr)\n\nresponse &lt;- GET(request)\n\n# Check if the request was successful\nif (status_code(response) == 200) {\n  # Convert the response content to a text format\n  response_content &lt;- content(response, as = \"text\")\n  \n  # Read the data into a dataframe (assuming tab-separated data)\n  data &lt;- read.table(text = response_content, header = TRUE, sep = \"\\t\", comment.char = \"#\")\n  \n  # Display the first few rows of the data\n  print(head(data))\n} else {\n  # Print an error message if the request failed\n  stop(\"Failed to fetch data. Status code: \", status_code(response))\n}\n\n  agency_cd  site_no   datetime X171001_00060_00003 X171001_00060_00003_cd\n1        5s      15s        20d                 14n                    10s\n2      USGS 02292900 1966-05-01                1930                      A\n3      USGS 02292900 1966-05-02                2160                      A\n4      USGS 02292900 1966-05-03                1940                      A\n5      USGS 02292900 1966-05-04                1960                      A\n6      USGS 02292900 1966-05-05                1900                      A\n\n# drop 1st row of data that has some kind of metadata. example of 1st row:\n# 1          5s      15s        20d                 14n                    10s\ndata &lt;- data[-1, ]\n\n\ndf &lt;- data\n# Ensure 'datetime' is properly converted\ndf$datetime &lt;- as.Date(df$datetime, format = \"%Y-%m-%d\")\n\ndf &lt;- df[!is.na(df$datetime), ]  # Remove rows with NA in datetime\n\n# Check and convert 'X171001_00060_00003' to numeric\ndf$X171001_00060_00003 &lt;- as.numeric(df$X171001_00060_00003)\ndf &lt;- df[!is.na(df$X171001_00060_00003), ]  # Remove rows with NA\n\n\n# Calculate a moving average\nlibrary(zoo)\n\n\nAttaching package: 'zoo'\n\n\nThe following objects are masked from 'package:base':\n\n    as.Date, as.Date.numeric\n\ndf$moving_avg &lt;- rollmean(df$X171001_00060_00003, k = 365, fill = NA, align = \"right\")\n\n# Create the time series plot\nlibrary(ggplot2)\nggplot(df, aes(x = datetime, y = X171001_00060_00003)) +\n  geom_point(shape = 4, color = \"black\", alpha = 0.1) +  # Transparent blue \"x\"\n  geom_line(aes(y = moving_avg), color = \"blue\", size = 1) +  # Moving average line\n  labs(\n    title = \"Time Series Plot\",\n    x = \"Datetime\",\n    y = \"Value\"\n  ) +\n  theme_minimal()\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\nWarning: Removed 364 rows containing missing values or values outside the scale range\n(`geom_line()`)."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "map.html",
+    "href": "map.html",
+    "title": "Interactive Station Map",
     "section": "",
-    "text": "About this site"
+    "text": "Map of stations.\n\n# Load required libraries\nlibrary(leaflet)\n\n# Load the data\ndata &lt;- read.csv(\"data/SouthFL_USGS_ACE_SiteList.csv\")\n\nleaflet(data) %&gt;%\n  addTiles() %&gt;%  # Add default OpenStreetMap tiles\n  addCircleMarkers(\n    ~Lon, ~Lat,\n    label = ~Station_shortname,  # Hover labels\n    radius = 5,                 # Adjust the size of the circle markers\n    color = \"blue\",             # Marker border color\n    fillColor = \"lightblue\",    # Marker fill color\n    fillOpacity = 0.7,          # Opacity of the fill color\n    popup = ~paste(\"&lt;b&gt;Station:&lt;/b&gt;\", Station_shortname)\n  )"
   },
   {
     "objectID": "index.html",
@@ -21,10 +21,17 @@
     "text": "Water discharge monitoring reports by IMaRS built using quarto."
   },
   {
-    "objectID": "map.html",
-    "href": "map.html",
-    "title": "Interactive Station Map",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "Map of stations.\n\n# Load required libraries\nlibrary(leaflet)\n\n# Load the data\ndata &lt;- read.csv(\"data/SouthFL_USGS_ACE_SiteList.csv\")  # Replace 'your_file.csv' with your file path\n\nleaflet(data) %&gt;%\n  addTiles() %&gt;%  # Add default OpenStreetMap tiles\n  addCircleMarkers(\n    ~Lon, ~Lat,\n    label = ~Station_shortname,  # Hover labels\n    radius = 5,                 # Adjust the size of the circle markers\n    color = \"blue\",             # Marker border color\n    fillColor = \"lightblue\",    # Marker fill color\n    fillOpacity = 0.7,          # Opacity of the fill color\n    popup = ~paste(\"&lt;b&gt;Station:&lt;/b&gt;\", Station_shortname)\n  )"
+    "text": "About this site"
+  },
+  {
+    "objectID": "data-download.html",
+    "href": "data-download.html",
+    "title": "fkwq-usgs-river-gauges",
+    "section": "",
+    "text": "library(glue)\nlibrary(httr)\n\n# Read the input CSV file\nsites &lt;- read.csv(\"data/SouthFL_USGS_ACE_SiteList.csv\")\n\n# Specify the base URL\nbase_url &lt;- \"https://waterdata.usgs.gov/nwis/dv?cb_{param_code}=on&format=rdb&site_no={sta_ID}&referred_module=sw&period=&begin_date=01-01-1950&end_date=12-31-2024\"\n\n# Create a directory to save the downloaded files\noutput_dir &lt;- \"data/downloads\"\ndir.create(output_dir, showWarnings = FALSE)\n\n# Loop through each row of the dataframe\nfor (i in seq_len(nrow(sites))) {\n  # Extract parameters from the current row\n  sta_ID &lt;- sites$USGS_ID[i] # Replace with the actual column name\n  param_code &lt;- sites$parameter2[i] # Replace with the actual column name\n  \n  # Construct the URL with parameters\n  query_params &lt;- list(param1 = param1, param2 = param2)\n  url &lt;- modify_url(base_url, query = query_params)\n  \n  # Construct the output file name\n  output_file &lt;- file.path(output_dir, paste0(\"file_\", i, \".csv\"))\n  \n  # Download the file and save it locally\n  tryCatch({\n    GET(url, write_disk(output_file, overwrite = TRUE))\n    message(\"Downloaded: \", output_file)\n  }, error = function(e) {\n    warning(\"Failed to download for row \", i, \": \", conditionMessage(e))\n  })\n}\n\nmessage(\"All downloads completed.\")"
   }
 ]
