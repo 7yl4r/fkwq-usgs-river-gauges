@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Total Discharge Out of Okeechobee – fkwq-usgs-river-gauges</title>
+<title>Eastward Flow out of Okeechobee – fkwq-usgs-river-gauges</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,21 +127,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./map.html"> 
-<span class="menu-text">Interactive Station Map</span></a>
+    <a class="nav-link" href="./okeeOutflow.html"> 
+<span class="menu-text">Okeechobee Outflows</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./stationInspect.html"> 
+<span class="menu-text">Single Station View</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text"></span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-downstream-flows" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Downstream Flows</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-downstream-flows">    
         <li>
-    <a class="dropdown-item" href="./flowDownRiver.html">
- <span class="dropdown-text">Downriver Flow</span></a>
+    <a class="dropdown-item" href="./riverflowSouth.html">
+ <span class="dropdown-text">Southward Flow out of Okeechobee</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./stationInspect.html">
- <span class="dropdown-text">Single Station view</span></a>
+    <a class="dropdown-item" href="./riverflowEast.html">
+ <span class="dropdown-text">Southward Flow out of Okeechobee</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./riverflowWest.html">
+ <span class="dropdown-text">Westward Flow out of Okeechobee</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./riverflowSoutheast.html">
+ <span class="dropdown-text">Southward Flow out of Okeechobee</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./riverflowSouthwest.html">
+ <span class="dropdown-text">Southwestern Flow out of Everglades</span></a>
   </li>  
     </ul>
   </li>
@@ -156,25 +172,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#eastward-flow-out-of-okeechobee" id="toc-eastward-flow-out-of-okeechobee" class="nav-link active" data-scroll-target="#eastward-flow-out-of-okeechobee">eastward flow out of Okeechobee</a></li>
-  <li><a href="#westward-flow-out-of-okeechobee" id="toc-westward-flow-out-of-okeechobee" class="nav-link" data-scroll-target="#westward-flow-out-of-okeechobee">westward flow out of Okeechobee</a></li>
-  <li><a href="#southeastern-flow-out-of-okeechobee" id="toc-southeastern-flow-out-of-okeechobee" class="nav-link" data-scroll-target="#southeastern-flow-out-of-okeechobee">southeastern flow out of Okeechobee</a></li>
-  <li><a href="#south-flow-out-of-okeechobee" id="toc-south-flow-out-of-okeechobee" class="nav-link" data-scroll-target="#south-flow-out-of-okeechobee">south flow out of Okeechobee</a></li>
-  <li><a href="#sw-flow-out-of-everglades" id="toc-sw-flow-out-of-everglades" class="nav-link" data-scroll-target="#sw-flow-out-of-everglades">SW flow out of Everglades</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Total Discharge Out of Okeechobee</h1>
+<h1 class="title">Eastward Flow out of Okeechobee</h1>
 </div>
 
 
@@ -191,39 +197,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="eastward-flow-out-of-okeechobee" class="level1">
-<h1>eastward flow out of Okeechobee</h1>
-<p>stations &lt;- c( “S-308”, “S-80” )</p>
-</section>
-<section id="westward-flow-out-of-okeechobee" class="level1">
-<h1>westward flow out of Okeechobee</h1>
-<p>stations &lt;- c( “S-354”, “S-79” )</p>
-</section>
-<section id="southeastern-flow-out-of-okeechobee" class="level1">
-<h1>southeastern flow out of Okeechobee</h1>
-<p>stations &lt;- c( “HillsCan” )</p>
-</section>
-<section id="south-flow-out-of-okeechobee" class="level1">
-<h1>south flow out of Okeechobee</h1>
-<p>stations &lt;- c( “S-351”, “S-12” )</p>
-</section>
-<section id="sw-flow-out-of-everglades" class="level1">
-<h1>SW flow out of Everglades</h1>
-<p>stations &lt;- c( “BotCr”, “Flam” )</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lake outflow total</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># eastward flow out of Okeechobee</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>stations <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"S-351"</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"S-354"</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"S-308"</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"LV8"</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"HillsCan"</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>param_name <span class="ot">&lt;-</span> <span class="st">"Disch"</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/plotStationsLine.R"</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plotStationsLine</span>(stations, param_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"S-308"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"S-80"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>param_name <span class="ot">&lt;-</span> <span class="st">"Disch"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/plotStationsLine.R"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plotStationsLine</span>(stations, param_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "using cached data"</code></pre>
 </div>
@@ -237,19 +221,16 @@ Attaching package: 'zoo'</code></pre>
     as.Date, as.Date.numeric</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "using cached data"
-[1] "using cached data"
-[1] "using cached data"
-[1] "using cached data"</code></pre>
+<pre><code>[1] "using cached data"</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 445 rows containing missing values or values outside the scale range
+<pre><code>Warning: Removed 178 rows containing missing values or values outside the scale range
 (`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="flowDownRiver_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="riverflowEast_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -271,22 +252,18 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "using cached data"
-[1] "using cached data"
-[1] "using cached data"
-[1] "using cached data"
 [1] "using cached data"</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="flowDownRiver_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="riverflowEast_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -381,7 +358,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/7yl4r\.github\.io\/fkwq-usgs-river-gauges\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

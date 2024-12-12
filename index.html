@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -66,6 +100,18 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="site_libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="site_libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -93,17 +139,40 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./map.html"> 
-<span class="menu-text">Interactive Station Map</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./flowDownRiver.html"> 
-<span class="menu-text">Downriver Flow</span></a>
+    <a class="nav-link" href="./okeeOutflow.html"> 
+<span class="menu-text">Okeechobee Outflows</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./stationInspect.html"> 
-<span class="menu-text">Single Station view</span></a>
+<span class="menu-text">Single Station View</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-downstream-flows" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Downstream Flows</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-downstream-flows">    
+        <li>
+    <a class="dropdown-item" href="./riverflowSouth.html">
+ <span class="dropdown-text">Southward Flow out of Okeechobee</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./riverflowEast.html">
+ <span class="dropdown-text">Southward Flow out of Okeechobee</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./riverflowWest.html">
+ <span class="dropdown-text">Westward Flow out of Okeechobee</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./riverflowSoutheast.html">
+ <span class="dropdown-text">Southward Flow out of Okeechobee</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./riverflowSouthwest.html">
+ <span class="dropdown-text">Southwestern Flow out of Everglades</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -115,8 +184,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#map-of-usgs-stations-used" id="toc-map-of-usgs-stations-used" class="nav-link active" data-scroll-target="#map-of-usgs-stations-used">Map of USGS stations used</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -141,8 +216,34 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Water discharge monitoring reports by IMaRS built using quarto.</p>
+<section id="map-of-usgs-stations-used" class="level1">
+<h1>Map of USGS stations used</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/SouthFL_USGS_ACE_SiteList.csv"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>(data) <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>USGS.USTopo) <span class="sc">%&gt;%</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircleMarkers</span>(</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>Lon, <span class="sc">~</span>Lat,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="sc">~</span>Station_shortname,  <span class="co"># Hover labels</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">radius =</span> <span class="dv">5</span>,                 <span class="co"># Adjust the size of the circle markers</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span>,             <span class="co"># Marker border color</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">fillColor =</span> <span class="st">"blue"</span>,    <span class="co"># Marker fill color</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">fillOpacity =</span> <span class="fl">0.7</span>,          <span class="co"># Opacity of the fill color</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">popup =</span> <span class="sc">~</span><span class="fu">paste</span>(<span class="st">"&lt;b&gt;Station:&lt;/b&gt;"</span>, Station_shortname)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-efb114ea3d46d7338f2b" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-efb114ea3d46d7338f2b">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["USGS.USTopo",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[26.72173357,27.10866667,25.46797778,25.3386722,25.6401611,25.69165,26.69534407,26.6976,26.91719444,25.7620472,25.25254167,25.85176527,26.70021389,26.98553333,26.33583333,25.9523611,25.926,25.90880556,25.89538889,25.8697222,25.8286111,25.70916667,25.13696944,25.17555556,25.16819444,25.19059444,25.20330278,25.2148972,25.232625,25.24210833,25.3749722,25.43055556,25.50138889,25.55555556,25.9002222,25.69905556,25.5598611,25.7625,27.2048,26.98528333,26.32719444,25.86415],[-81.69318060000001,-80.28725,-80.8545278,-80.91321670000001,-80.6527667,-80.63491670000001,-80.8067278,-80.7128167,-80.6129444,-80.6820444,-80.68286670000001,-80.9803467,-80.7090694,-80.6156,-81.74938889000001,-81.58442220000001,-81.5443056,-81.5109167,-81.4555,-81.38249999999999,-81.3416667,-81.24972219999999,-81.06438060000001,-80.7927778,-80.73358888999999,-80.6390528,-80.5841111,-80.5335056,-80.5248667,-80.4475722,-81.0366944,-81.0859583,-81.0769444,-81.1647222,-80.1949722,-80.3606111,-80.35955559999999,-80.3280833,-80.2587833,-80.16,-80.8816111,-80.6208333],5,null,null,{"interactive":true,"className":"","stroke":true,"color":"black","weight":5,"opacity":0.5,"fill":true,"fillColor":"blue","fillOpacity":0.7},null,null,["<b>Station:<\/b> S-79","<b>Station:<\/b> S-80","<b>Station:<\/b> BotCr","<b>Station:<\/b> Flam","<b>Station:<\/b> SR_4","<b>Station:<\/b> SR_1","<b>Station:<\/b> S-354","<b>Station:<\/b> S-351","<b>Station:<\/b> LV8","<b>Station:<\/b> S-12","<b>Station:<\/b> E-146","<b>Station:<\/b> M-40","<b>Station:<\/b> HillsCan","<b>Station:<\/b> S-308","<b>Station:<\/b> IMPRv","<b>Station:<\/b> BLKRv","<b>Station:<\/b> PUMRv","<b>Station:<\/b> FURv","<b>Station:<\/b> EASTRv","<b>Station:<\/b> BARRv","<b>Station:<\/b> TURRv","<b>Station:<\/b> CHATRv","<b>Station:<\/b> ESTSDCr","<b>Station:<\/b> ALLCr","<b>Station:<\/b> MCCr","<b>Station:<\/b> TAYRv","<b>Station:<\/b> MUDCr","<b>Station:<\/b> TRTCr","<b>Station:<\/b> JOBay","<b>Station:<\/b> WHCr","<b>Station:<\/b> ShkRv","<b>Station:<\/b> HarnRv","<b>Station:<\/b> BrdRv","<b>Station:<\/b> LostRv","<b>Station:<\/b> C8Can","<b>Station:<\/b> SnapCr","<b>Station:<\/b> BlkCrCan","<b>Station:<\/b> TamCan","<b>Station:<\/b> StLcRvSt","<b>Station:<\/b> LoxRv","<b>Station:<\/b> 3mCan","<b>Station:<\/b> S-152"],null,["S-79","S-80","BotCr","Flam","SR_4","SR_1","S-354","S-351","LV8","S-12","E-146","M-40","HillsCan","S-308","IMPRv","BLKRv","PUMRv","FURv","EASTRv","BARRv","TURRv","CHATRv","ESTSDCr","ALLCr","MCCr","TAYRv","MUDCr","TRTCr","JOBay","WHCr","ShkRv","HarnRv","BrdRv","LostRv","C8Can","SnapCr","BlkCrCan","TamCan","StLcRvSt","LoxRv","3mCan","S-152"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[25.13696944,27.2048],"lng":[-81.74938889000001,-80.16]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -144,12 +144,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./flowDownRiver.html"> 
-<span class="menu-text">Downriver Flow</span></a>
+<span class="menu-text">Okeechobee Outflows</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./stationInspect.html"> 
-<span class="menu-text">Single Station view</span></a>
+<span class="menu-text">Single Station View</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-downstream-flows" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Downstream Flows</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-downstream-flows">    
+        <li>
+    <a class="dropdown-item" href="./stationInspect.html">
+ <span class="dropdown-text">Single Station view</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -306,7 +317,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/7yl4r\.github\.io\/fkwq-usgs-river-gauges\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
