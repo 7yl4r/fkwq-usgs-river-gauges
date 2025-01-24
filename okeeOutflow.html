@@ -161,6 +161,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-regional-outflows" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Regional Outflows</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-regional-outflows">    
+        <li class="dropdown-header">outflowNorth.qmd</li>
+        <li class="dropdown-header">outflowWest.qmd</li>
+        <li class="dropdown-header">outflowSouth.qmd</li>
+        <li class="dropdown-header">outflowEash.qmd</li>
+        <li class="dropdown-header">outflowCentral.qmd</li>
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/marinebon/data_reports"> 
+<span class="menu-text">Source Code on GitHub</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -205,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"S-351"</span>,</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"S-354"</span>,</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"S-308"</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"LV8"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "LV8",  # no Disch</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"HillsCan"</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
@@ -229,11 +245,10 @@ Attaching package: 'zoo'</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "using cached data"
 [1] "using cached data"
-[1] "using cached data"
 [1] "using cached data"</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 445 rows containing missing values or values outside the scale range
+<pre><code>Warning: Removed 356 rows containing missing values or values outside the scale range
 (`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -264,7 +279,6 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "using cached data"
-[1] "using cached data"
 [1] "using cached data"
 [1] "using cached data"
 [1] "using cached data"</code></pre>
