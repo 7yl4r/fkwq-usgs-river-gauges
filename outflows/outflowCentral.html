@@ -172,13 +172,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../outflows/outflowWest.html">
- <span class="dropdown-text">Outflow to Gulf (Central)</span></a>
+ <span class="dropdown-text">Outflow to Gulf (West)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../outflows/outflowSouth.html">
  <span class="dropdown-text">Outflow to Gulf (South)</span></a>
   </li>  
-        <li class="dropdown-header">outflows/outflowEash.qmd</li>
+        <li>
+    <a class="dropdown-item" href="../outflows/outflowEast.html">
+ <span class="dropdown-text">Outflow to Atlantic</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="../outflows/outflowCentral.html">
  <span class="dropdown-text">Outflow to Gulf (Central)</span></a>
@@ -245,21 +248,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "using cached data"</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'zoo'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    as.Date, as.Date.numeric</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "using cached data"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 178 rows containing missing values or values outside the scale range
-(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -270,23 +260,9 @@ Attaching package: 'zoo'</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"R/plotStationsStream.R"</span>))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotStationsStream</span>(stations, param_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"R/plotStationsStream.R"</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotStationsStream</span>(stations, param_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "using cached data"
 [1] "using cached data"</code></pre>
